@@ -16,13 +16,21 @@ from trl import SFTTrainer
 
 
 class ModelTrain:
-    def __init__(self) -> None:
-        pass
+    def __init__(self, training_parameter = {}) -> None:
 
-    def train_model(self):
+        self.model_name = training_parameter.model_name
+        self.epochs = training_parameter.epochs
+        self.train_batch_size = training_parameter.train_batch_size
+        self.val_batch_size = training_parameter.val_batch_size
+
+
+    def create_data(self,question, answer):
+        text = f"<s> [INST] {question} [/INST] {answer} </s>"
+        return text
+
+    def train_model(self, data, training_parameters = None):
 
         # The model that you want to train from the Hugging Face hub
-        model_name = "NousResearch/Llama-2-7b-chat-hf"
         tiny_model = "reciprocate/tiny-llama"
 
         # Fine-tuned model name
@@ -123,8 +131,6 @@ class ModelTrain:
         # Load the entire model on the GPU 0
         device_map = {"": 0}
 
-
-
         # Load tokenizer and model with QLoRA configuration
         compute_dtype = getattr(torch, bnb_4bit_compute_dtype)
 
@@ -186,6 +192,9 @@ class ModelTrain:
             lr_scheduler_type=lr_scheduler_type,
             report_to="tensorboard"
         )
+
+
+        
 
         # Set supervised fine-tuning parameters
         trainer = SFTTrainer(
