@@ -4,9 +4,7 @@
 import streamlit as st
 
 
-def create_data(question, answer):
-  text = f"<s> [INST] {question} [/INST] {answer} </s>"
-  return text
+
 
 # Run text generation pipeline with our next model
 
