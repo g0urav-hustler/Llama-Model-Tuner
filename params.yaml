@@ -1,0 +1,9 @@
+data_processing:
+  question_col: category
+  answer_col: text
+
+model_params:
+  epochs: 5
+  model_name: bert-base-uncased
+  train_batch_size: 4
+  val_batch_size: 4
