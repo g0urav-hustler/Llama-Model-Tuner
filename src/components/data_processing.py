@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 from src.constants import *
-from src.utils.common import read_yaml,create_directories, save_json
+from src.utils.common import read_yaml,create_directories, save_json, load_json
 
 
 class DataProcessing():
@@ -32,8 +32,24 @@ class DataProcessing():
         formated_data = self.create_formated_data(df[params.question_col], df[params.answer_col])
         save_json(Path(os.path.join(config.processed_data_dir, "processed_data.json")), formated_data)
 
+    def get_split_data(self):
+        config = self.config.data_processing
+        params = self.params.data_processing
+
+        processed_data = load_json(Path(os.path.join(config.processed_data_dir, "processed_data.json")))
+
+        data_len = len(processed_data["text"])
+        train_data_range = int(params.train_data_size*data_len)
+
+        training_data = {"text": processed_data["text"][:train_data_range]}
+        save_json(Path(os.path.join(config.split_data_dir, "train_data.json")), training_data)
+
+        validation_data = {"text": processed_data["text"][train_data_range:]}
+        save_json(Path(os.path.join(config.split_data_dir, "validation_data.json")), validation_data)
+
 
 
 if __name__ == "__main__":
     obj = DataProcessing()
     obj.get_processed_data()
+    obj.get_split_data()
