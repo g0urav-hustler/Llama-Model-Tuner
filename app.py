@@ -1,12 +1,13 @@
 import os
 import time
 import yaml
+import shutil
 import streamlit as st
 import pandas as pd
 from src.components.data_ingestion import DataIngestion
 from src.components.data_processing import DataProcessing
 from src.components.train_model import ModelTrain
-from transformers import AutoTokenizer
+from transformers import AutoTokenizer, AutoModelForCausalLM , pipeline
 
 
 
@@ -19,8 +20,15 @@ def load_tokenizer( model_path):
 
 @st.cache_resource(show_spinner="Loading model for testing..")
 def load_model( model_path):
-    model = AutoModelForSequenceClassification.from_pretrained(model_name= model_path,)
+    model = AutoModelForCausalLM.from_pretrained(model_name= model_path,)
     return model
+
+def compressing_model(model_path, zip_file_name):
+    
+    shutil.make_archive(zip_file_name, "zip", model_path)
+
+
+training_result = None
 
 
 # page config
@@ -146,8 +154,10 @@ if uploaded_file is not None:
                 data_processing_process.get_split_data()
                 time.sleep(2)
                 st.write("Training model..")
-                train_model_process = ModelTrain()
-                training_result = train_model_process.train_model()
+                # train_model_process = ModelTrain()
+                # training_result = train_model_process.train_model()
+                # shutil.copytree("/home/gourav/ML/QA_Models_Builder/logs/bert", os.path.join("artifacts","models", model_type))
+                # compressing_model(os.path.join("artifacts","models",model_name), model_name)
                 status.update(label="Model Trained Succesfully", state="complete", expanded=False)
  
             st.success('Done!')
@@ -180,7 +190,6 @@ if uploaded_file is not None:
             answer = model.predict()
             st.write("Predicted Answer")
             st.write(answer)
-
 
         with open(f"{model_name}.zip", "rb") as fp:
             btn = st.download_button(
