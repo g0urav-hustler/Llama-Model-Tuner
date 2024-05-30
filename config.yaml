@@ -11,6 +11,6 @@ data_processing:
   
 
 train_model:
-  train_data_path: artifacts/processed_data
+  split_data_dir: artifacts/split_data
   saved_model_dir: artifacts/models
   output_dir: artifacts/model_output
