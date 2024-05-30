@@ -1,2 +1,17 @@
 # virtual environment
 env
+# temperory file
+temp.py
+# for 
+web_files
+
+# loggings 
+logs
+
+# pycache
+__pycache__
+
+# artifacts
+artifacts
+
+temp.ipynb
