@@ -9,7 +9,8 @@ class DataProcessing():
     def __init__(self):
         self.config = read_yaml(CONFIG_FILE_PATH)
         self.params = read_yaml(PARAMS_FILE_PATH)
-        create_directories([self.config.data_processing.processed_data_dir])
+        create_directories([self.config.data_processing.processed_data_dir,
+                            self.config.data_processing.split_data_dir])
 
     def create_formated_data(self, questions_list, answers_list):
 

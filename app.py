@@ -182,8 +182,10 @@ if uploaded_file is not None:
             answer = model.predict()
             st.write("Predicted Answer")
             st.write(answer)
-
-        with open(f"bert.zip", "rb") as fp:
+        
+        zipfolder,zipfile = model_name.split("/")
+        zipfile_path = os.path.join(zipfolder, zipfile + ".zip")
+        with open(zipfile_path, "rb") as fp:
             btn = st.download_button(
                 label="Download Trained Model",
                 data=fp,
