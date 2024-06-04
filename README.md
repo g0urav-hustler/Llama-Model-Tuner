@@ -20,21 +20,21 @@
   
 
 1. Upload your custom dataset in csv format.
-![Webui Image](https://github.com/g0urav-hustler/Llama-Model-Tuner/blob/main/redme_sources/photo_1.png)
+![Webui Image](https://github.com/g0urav-hustler/Llama-Model-Tuner/blob/main/readme_sources/photo_1.png)
   
 
 2. Select the parameter and copy your model name from hugging face model web.
-![Webui Image](https://github.com/g0urav-hustler/Llama-Model-Tuner/blob/main/redme_sources/photo_2.png)
+![Webui Image](https://github.com/g0urav-hustler/Llama-Model-Tuner/blob/main/readme_sources/photo_2.png)
   
 
 3. Train the model and see model result.
-![Webui Image](https://github.com/g0urav-hustler/Llama-Model-Tuner/blob/main/redme_sources/photo_3.png)
+![Webui Image](https://github.com/g0urav-hustler/Llama-Model-Tuner/blob/main/readme_sources/photo_3.png)
 
 4. See model result and download the model as zip file.
-![Webui Image](https://github.com/g0urav-hustler/Text-Classification-Model-Builder/blob/main/readme_source/photo_4.png)
+![Webui Image](https://github.com/g0urav-hustler/Llama-Model-Tuner/blob/main/readme_sources/photo_4.png)
 
 6. Try different model outputs mannually
-![Webui Image](https://github.com/g0urav-hustler/Llama-Model-Tuner/blob/main/redme_sources/photo_5.png)
+![Webui Image](https://github.com/g0urav-hustler/Llama-Model-Tuner/blob/main/readme_sources/photo_5.png)
 
   
 ## Project Pipeline
