@@ -149,7 +149,6 @@ if uploaded_file is not None:
                 st.write("Training Model Stage")
                 train_model_process = ModelTrain()
                 training_result = train_model_process.train_model()
-                training_result = {"accuracy" : 0.98732, "loss": 0.88233}
                 compressing_model(os.path.join("artifacts","models",model_name), model_name)
                 status.update(label="Model Trained Succesfully", state="complete", expanded=False)
  
